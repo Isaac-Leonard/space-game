@@ -111,7 +111,7 @@ pub trait ObjectTrait: ModelTrait + Send + Sync {
     ) -> impl std::future::Future<Output = bool> + Send {
         async {
             let object = self.get_object(db).await;
-            Some(object.id) == object.contained_by
+            object.contained_by == None
         }
     }
 
