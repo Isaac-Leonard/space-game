@@ -1,5 +1,5 @@
+pub use super::_entities::coordinates::{ActiveModel, Column, Entity, Model};
 use sea_orm::entity::prelude::*;
-pub use super::_entities::coordinates::{ActiveModel, Model, Entity};
 pub type Coordinates = Entity;
 
 #[async_trait::async_trait]

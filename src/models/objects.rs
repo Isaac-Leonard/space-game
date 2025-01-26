@@ -95,7 +95,7 @@ pub trait ObjectTrait: ModelTrait + Send + Sync {
                 container.get_coords(db).await
             } else {
                 coordinates::Entity::find()
-                    .filter(Column::Id.eq(object.id))
+                    .filter(coordinates::Column::Id.eq(object.id))
                     .one(db)
                     .await
                     .unwrap()
