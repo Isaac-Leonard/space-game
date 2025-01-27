@@ -11,8 +11,9 @@ use sea_orm::{Condition, QueryOrder, QuerySelect};
 use serde::Serialize;
 
 use crate::models::{
-    _entities::coordinates, material_stars, materials, objects::ObjectTrait, spacecrafts, stars,
-    users,
+    coordinates, material_stars, materials,
+    objects::{self, ObjectTrait},
+    spacecrafts, stars, users,
 };
 
 #[derive(Clone, Debug, PartialEq, Serialize, JsonSchema)]
@@ -43,17 +44,23 @@ pub async fn near_by(
     let distance_from_ship =
         (x_distance.clone().mul(x_distance)).add(y_distance.clone().mul(y_distance));
 
-    let stars = stars::Entity::find()
+    let stars = coordinates::Entity::find()
         .filter(Condition::any().add(distance_from_ship.clone().lt((9.6e15 * 10.0_f64).powi(2))))
         .order_by_asc(distance_from_ship)
+        .find_also_related(objects::Entity)
         .limit(20)
         .all(&ctx.db)
         .await
         .unwrap();
 
     let mut star_descriptors = vec![];
-    for star in stars {
-        let star_coords = star.get_coords(&ctx.db).await;
+    for (star_coords, object) in stars {
+        let star = stars::Entity::find()
+            .filter(stars::Column::Id.eq(object.unwrap().id))
+            .one(&ctx.db)
+            .await
+            .unwrap();
+        let Some(star) = star else { continue };
         star_descriptors.push(StarDescriptor {
             id: star.id,
             x: star_coords.x,

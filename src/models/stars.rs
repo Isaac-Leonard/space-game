@@ -1,4 +1,4 @@
-pub use super::_entities::stars::{ActiveModel, Entity, Model};
+pub use super::_entities::stars::{ActiveModel, Column, Entity, Model};
 use super::{material_stars, objects::ObjectTrait, planets};
 use futures::future::join_all;
 use sea_orm::entity::prelude::*;
