@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { getCurrentSystemDetails } from "../../api/nearby";
+import { client, throwError } from "../../client";
 
 export const Route = createFileRoute("/play/system")({
   component: System,
-  loader: ({ context }) => getCurrentSystemDetails(context.user!.token),
+  loader: async () => throwError(await client.api.getSystemsCurrentSystem()),
 });
 
 function System() {
@@ -32,7 +32,11 @@ function System() {
         </table>
       </div>
       <h2>Planets</h2>
-      <div>There are {system.planets} in this system</div>
+      <ul>
+        {system.planets.map((planet) => (
+          <li key={planet.id}>{planet.type}</li>
+        ))}
+      </ul>
     </div>
   );
 }

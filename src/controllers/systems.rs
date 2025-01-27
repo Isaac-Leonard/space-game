@@ -85,6 +85,7 @@ pub struct SystemDetails {
 
 #[derive(Clone, Debug, PartialEq, Serialize, JsonSchema)]
 pub struct PlanetDescriptor {
+    id: i32,
     r#type: String,
 }
 
@@ -139,7 +140,10 @@ pub async fn system_details(
         composition,
         planets: planets
             .into_iter()
-            .map(|p| PlanetDescriptor { r#type: p.r#type })
+            .map(|p| PlanetDescriptor {
+                id: p.id,
+                r#type: p.r#type,
+            })
             .collect(),
     })
 }

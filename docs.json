@@ -592,9 +592,14 @@
       "PlanetDescriptor": {
         "type": "object",
         "required": [
+          "id",
           "type"
         ],
         "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
           "type": {
             "type": "string"
           }
