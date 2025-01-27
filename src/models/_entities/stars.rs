@@ -15,7 +15,6 @@ pub struct Model {
     pub r#type: String,
     #[sea_orm(column_type = "Double")]
     pub temperature: f64,
-    pub object_id: i32,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]

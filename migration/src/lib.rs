@@ -24,6 +24,10 @@ mod m20250120_153753_add_objects_ref_to_planets;
 mod m20250120_153809_add_objects_ref_to_ships;
 mod m20250120_154005_remove_x_and_y_and_z_from_ships;
 mod m20250120_154406_remove_x_and_y_and_z_from_stars;
+mod m20250126_163032_remove_object_id_from_stars;
+mod m20250126_163650_remove_x_and_y_and_z_from_planets;
+mod m20250127_093432_remove_object_ref_from_planets;
+mod m20250127_093619_remove_object_ref_from_spacecrafts;
 pub struct Migrator;
 
 #[async_trait::async_trait]
@@ -52,6 +56,10 @@ impl MigratorTrait for Migrator {
             Box::new(m20250120_153809_add_objects_ref_to_ships::Migration),
             Box::new(m20250120_154005_remove_x_and_y_and_z_from_ships::Migration),
             Box::new(m20250120_154406_remove_x_and_y_and_z_from_stars::Migration),
+            Box::new(m20250126_163032_remove_object_id_from_stars::Migration),
+            Box::new(m20250126_163650_remove_x_and_y_and_z_from_planets::Migration),
+            Box::new(m20250127_093432_remove_object_ref_from_planets::Migration),
+            Box::new(m20250127_093619_remove_object_ref_from_spacecrafts::Migration),
             // inject-above (do not remove this comment)
         ]
     }

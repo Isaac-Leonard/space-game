@@ -19,7 +19,6 @@ pub struct Model {
     pub owned_by: i32,
     #[sea_orm(column_type = "Double")]
     pub volume: f64,
-    pub object_id: i32,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]

@@ -73,7 +73,7 @@ database:
   # Database connection URI
   uri: {{ get_env(name="DATABASE_URL", default="sqlite://space-game_development.sqlite?mode=rwc") }}
   # When enabled, the sql query will be logged.
-  enable_logging: true
+  enable_logging: false
   # Set the timeout duration when acquiring a connection.
   connect_timeout: {{ get_env(name="DB_CONNECT_TIMEOUT", default="5000") }}
   # Set the idle duration before closing a connection.

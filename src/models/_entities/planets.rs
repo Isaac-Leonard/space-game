@@ -11,15 +11,8 @@ pub struct Model {
     #[sea_orm(primary_key)]
     pub id: i32,
     #[sea_orm(column_type = "Double")]
-    pub x: f64,
-    #[sea_orm(column_type = "Double")]
-    pub y: f64,
-    #[sea_orm(column_type = "Double")]
-    pub z: f64,
-    #[sea_orm(column_type = "Double")]
     pub radius: f64,
     pub r#type: String,
-    pub object_id: i32,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]

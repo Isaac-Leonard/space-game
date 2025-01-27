@@ -51,12 +51,12 @@ impl Model {
         .await;
 
         let spacecraft = ActiveModel {
+            id: ActiveValue::set(object.id),
             mass: ActiveValue::set(params.mass),
             speed: ActiveValue::set(params.speed),
             owned_by: ActiveValue::set(params.user),
             r#type: ActiveValue::set(params.r#type.to_string()),
             name: ActiveValue::set(params.name.to_string()),
-            object_id: ActiveValue::set(object.id),
             ..Default::default()
         }
         .insert(&txn)
