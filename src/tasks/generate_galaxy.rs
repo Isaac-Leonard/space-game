@@ -133,6 +133,8 @@ impl Task for GenerateGalaxy {
                     r#type: ActiveValue::set(
                         PLANET_TYPES[(rand::random::<f64>() * 5.0).floor() as usize].to_string(),
                     ),
+                    radius: ActiveValue::set(12000000.0),
+                    // mass: ActiveValue::set(5e24),
                     ..Default::default()
                 };
                 planet.insert(&ctx.db).await.unwrap();
