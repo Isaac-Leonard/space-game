@@ -658,7 +658,9 @@
           "id",
           "mass",
           "name",
-          "speed"
+          "speed",
+          "type",
+          "volume"
         ],
         "properties": {
           "coordinates": {
@@ -676,6 +678,13 @@
             "type": "string"
           },
           "speed": {
+            "type": "number",
+            "format": "double"
+          },
+          "type": {
+            "type": "string"
+          },
+          "volume": {
             "type": "number",
             "format": "double"
           }

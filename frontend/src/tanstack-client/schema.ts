@@ -667,6 +667,8 @@ export interface components {
             pid: string;
         };
         PlanetDescriptor: {
+            /** Format: int32 */
+            id: number;
             type: string;
         };
         RegisterParams: {
@@ -691,6 +693,9 @@ export interface components {
             name: string;
             /** Format: double */
             speed: number;
+            type: string;
+            /** Format: double */
+            volume: number;
         };
         StarDescriptor: {
             /** Format: int32 */

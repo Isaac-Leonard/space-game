@@ -1,11 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { getShipDetails } from "../../../api/ships";
+import { client, throwError } from "../../../client";
 
 export const Route = createFileRoute("/play/ships/$shipId")({
   component: Ship,
-  loader: async ({ context, params }) => {
-    return await getShipDetails(Number(params.shipId), context.user!.token);
-  },
+  loader: async ({ params }) =>
+    throwError(
+      await client.api.getSpacecraftsId({
+        parameters: { path: { id: Number(params.shipId) } },
+      })
+    ),
 });
 
 function Ship() {
@@ -14,7 +17,7 @@ function Ship() {
     <div>
       <h1>{ship.name}</h1>
       <div>
-        Coords: {ship.x}, {ship.y}{" "}
+        Coords: {ship.coordinates.x}, {ship.coordinates.y}{" "}
       </div>
       <div>Mass: {ship.mass}</div>
       <div>Speed: {ship.speed}</div>

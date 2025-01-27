@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { getShips } from "../../../api/ships";
+import { client, throwError } from "../../../client";
 
 function Ships() {
   const ships = Route.useLoaderData();
@@ -25,5 +25,5 @@ function Ships() {
 
 export const Route = createFileRoute("/play/ships/")({
   component: Ships,
-  loader: async ({ context }) => await getShips(context.user!.token),
+  loader: async () => throwError(await client.api.getSpacecrafts()),
 });

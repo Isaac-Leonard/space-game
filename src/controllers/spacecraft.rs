@@ -33,6 +33,8 @@ pub struct SpacecraftDescriptor {
     mass: f64,
     speed: f64,
     id: i32,
+    r#type: String,
+    volume: f64,
     coordinates: Coordinates,
 }
 
@@ -44,6 +46,8 @@ impl From<(spacecrafts::Model, coordinates::Model)> for SpacecraftDescriptor {
             speed: craft.speed,
             id: craft.id,
             coordinates: coords.into(),
+            volume: craft.volume,
+            r#type: craft.r#type,
         }
     }
 }
