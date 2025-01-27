@@ -7,7 +7,7 @@
     "dev": "vite --open",
     "build": "vite build",
     "preview": "vite preview",
-    "generate_client": "openapi-zod-client ../docs.json -o src/client.ts"
+    "generate_client": "openapi-qraft --plugin tanstack-query-react --plugin openapi-typescript ../docs.json  --output-dir src/tanstack-client"
   },
   "devDependencies": {
     "@openapi-qraft/cli": "^2.0.0-next.19",
