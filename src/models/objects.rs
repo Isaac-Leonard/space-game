@@ -111,7 +111,7 @@ pub trait ObjectTrait: ModelTrait + Send + Sync {
     ) -> impl std::future::Future<Output = bool> + Send {
         async {
             let object = self.get_object(db).await;
-            object.contained_by == None
+            object.contained_by.is_none()
         }
     }
 
@@ -145,5 +145,21 @@ pub trait ObjectTrait: ModelTrait + Send + Sync {
                 .all(db)
                 .await
         }
+    }
+}
+
+#[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
+pub enum Relation {
+    #[sea_orm(belongs_to = "Entity", from = "Column::ContainedBy", to = "Column::Id")]
+    Contained,
+}
+
+impl Linked for Model {
+    type FromEntity = Entity;
+
+    type ToEntity = Entity;
+
+    fn link(&self) -> Vec<RelationDef> {
+        vec![Relation::Contained.def()]
     }
 }

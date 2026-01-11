@@ -69,6 +69,7 @@ impl Hooks for App {
     fn register_tasks(tasks: &mut Tasks) {
         tasks.register(tasks::generate_galaxy::GenerateGalaxy);
         tasks.register(tasks::setup_materials::SetupMaterials);
+        tasks.register(tasks::tick::Tick);
         // tasks-inject (do not remove)
     }
     async fn truncate(ctx: &AppContext) -> Result<()> {

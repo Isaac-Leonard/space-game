@@ -1,4 +1,7 @@
-pub use super::_entities::coordinates::{ActiveModel, Column, Entity, Model};
+pub use super::{
+    _entities::coordinates::{ActiveModel, Column, Entity, Model},
+    objects,
+};
 use sea_orm::entity::prelude::*;
 pub type Coordinates = Entity;
 

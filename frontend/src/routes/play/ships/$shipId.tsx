@@ -19,9 +19,11 @@ function Ship() {
       <div>
         Coords: {ship.coordinates.x}, {ship.coordinates.y}{" "}
       </div>
-      <div>Mass: {ship.mass}</div>
-      <div>Speed: {ship.speed}</div>
-      <div>Volume: {ship.volume}</div>
+      <div>Mass: {ship.mass} kg</div>
+      <div>Speed: {ship.speed} m/s</div>
+      <div>
+        Holdspace: {ship.volume} m<sup>3</sup>
+      </div>
     </div>
   );
 }

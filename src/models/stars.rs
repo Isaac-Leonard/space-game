@@ -60,3 +60,21 @@ impl ActiveModel {}
 
 // implement your custom finders, selectors oriented logic here
 impl Entity {}
+
+#[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
+pub enum Relation {
+    #[sea_orm(
+        belongs_to = "super::objects::Entity",
+        from = "Column::Id",
+        to = "super::objects::Column::Id",
+        on_update = "Cascade",
+        on_delete = "Cascade"
+    )]
+    Object,
+}
+
+impl Related<super::objects::Entity> for Entity {
+    fn to() -> RelationDef {
+        Relation::Object.def()
+    }
+}
