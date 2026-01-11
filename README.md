@@ -1,58 +1,16 @@
-# Welcome to Loco :train:
-
-[Loco](https://loco.rs) is a web and API framework running on Rust.
-
-This is the **SaaS starter** which includes a `User` model and authentication based on JWT.
-It also include configuration sections that help you pick either a frontend or a server-side template set up for your fullstack server.
-
-
-## Quick Start
-
-```sh
-cargo loco start
+# Space Game
+This is a simple text based space rpg / rts game that I have been working on.
+It uses the loco framework with the backend being written in rust and the frontend using typescript with react and Tanstack router.
+## Running locally
+To run locally you will need nodejs installed with npm, rustup installed with cargo and a local email catcher such as mail hog or mailtutan.
+For more information on local email catchers look at the loco mailers [documentation](https://loco.rs/docs/processing/mailers/).
+Once these are all installed in separate terminal tabs run the following commands:
 ```
-
-```sh
-$ cargo loco start
-Finished dev [unoptimized + debuginfo] target(s) in 21.63s
-    Running `target/debug/myapp start`
-
-    :
-    :
-    :
-
-controller/app_routes.rs:203: [Middleware] Adding log trace id
-
-                      ▄     ▀
-                                 ▀  ▄
-                  ▄       ▀     ▄  ▄ ▄▀
-                                    ▄ ▀▄▄
-                        ▄     ▀    ▀  ▀▄▀█▄
-                                          ▀█▄
-▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄▄▄ ▀▀█
- ██████  █████   ███ █████   ███ █████   ███ ▀█
- ██████  █████   ███ █████   ▀▀▀ █████   ███ ▄█▄
- ██████  █████   ███ █████       █████   ███ ████▄
- ██████  █████   ███ █████   ▄▄▄ █████   ███ █████
- ██████  █████   ███  ████   ███ █████   ███ ████▀
-   ▀▀▀██▄ ▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀ ██▀
-       ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-                https://loco.rs
-
-environment: development
-   database: automigrate
-     logger: debug
-compilation: debug
-      modes: server
-
-listening on http://localhost:5150
+mailtutan # Or what ever other mail catcher you have installed
+cargo run start
+npm run dev
 ```
-
-## Full Stack Serving
-
-You can check your [configuration](config/development.yaml) to pick either frontend setup or server-side rendered template, and activate the relevant configuration sections.
-
-
-## Getting help
-
-Check out [a quick tour](https://loco.rs/docs/getting-started/tour/) or [the complete guide](https://loco.rs/docs/getting-started/guide/).
+This final command should launch your browser to the home page of the application.
+In a separate browser tab you will probably want to open the email catcher you have ran using the http url it specifies.
+You can then navigate to the register page of the application and proceed to create an account.
+An email will be sent that will show up in the mail catcher with a link you can click on to create your account.
